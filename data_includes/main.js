@@ -1,17 +1,45 @@
 PennController.ResetPrefix(null); // Shorten command names (keep this line here))
 
-// DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
+Header(
+// void
+)
+.log( "PROLIFIC_ID" , GetURLParameter("PROLIFIC_PID") )
+.log( "STUDY_ID" , GetURLParameter("STUDY_ID") )
+.log( "SESSION_ID" , GetURLParameter("SESSION_ID") )
+
+DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
+
+// custom function
+
+function SepWithN(sep, main, n) {
+    this.args = [sep,main];
+
+    this.run = function(arrays) {
+        assert(arrays.length == 2, "Wrong number of arguments (or bad argument) to SepWithN");
+        assert(parseInt(n) > 0, "N must be a positive number");
+        let sep = arrays[0];
+        let main = arrays[1];
+
+        if (main.length <= 1)
+            return main
+        else {
+            let newArray = [];
+            while (main.length){
+                for (let i = 0; i < n && main.length>0; i++)
+                    newArray.push(main.shift());
+                for (let j = 0; j < sep.length; ++j)
+                    newArray.push(sep[j]);
+            }
+            return newArray;
+        }
+    }
+}
+function sepWithN(sep, main, n) { return new SepWithN(sep, main, n); }
+
 
 // First show instructions, then experiment trials, send results and show end screen
 
-Sequence("counter", "consent", "instructions", randomize("experimental-trial"), "questionnaire", "send", "confirmation-prolific")
-
-// This is run at the beginning of each trial
-Header(
-    // Declare a global Var element "ID" in which we will store the participant's ID
-    newVar("ID").global()    
-)
-.log( "id" , getVar("ID") ) // Add the ID to all trials' results lines
+Sequence("counter", "consent", "instructions", sepWithN("break", randomize("experimental-trial"), 42), "questionnaire", "send", "confirmation-prolific")
 
 SetCounter("counter", "inc", 1);
 
@@ -115,6 +143,8 @@ newTrial("questionnaire",
         .remove()
 )
 
+
+// TODO: add practice trials
 
 // Experimental trial
 Template("benchmark_items.csv", row =>
