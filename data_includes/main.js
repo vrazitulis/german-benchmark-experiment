@@ -95,23 +95,11 @@ newTrial("instructions",
         .cssContainer({"width":"700px"})
         .print()
     ,
-    newText("Please type in your ID below.")
-        .css("font-size", "medium")
-    ,
-    newTextInput("inputID", "")
+    newButton("continue", "Click to continue")
         .center()
-        .css("margin","1em")    // Add a 1em margin around this element
-        .print()
-    ,
-    newButton("Start")
         .css("font-size", "medium")
-        .center()
         .print()
-        // Only validate a click on Start when inputID has been filled
-        .wait( getTextInput("inputID").testNot.text("") )
-    ,
-    // Store the text from inputID into the Var element
-    getVar("ID").set( getTextInput("inputID") )
+        .wait()
 )
 
 
