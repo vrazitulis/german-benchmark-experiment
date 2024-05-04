@@ -146,6 +146,31 @@ newTrial("questionnaire",
 
 // TODO: add practice trials
 
+newTrial("break",
+     // Automatically print all Text elements, centered
+    newText("pleasewait", "<span style='font-size:20px;'>Take a breather!</span>")
+    .print()
+    .center()
+    ,
+    newTimer("wait", 10000)
+    .start()
+    .wait()
+    ,
+    getText("pleasewait")
+    .remove()
+    ,
+    newText("resume", "<span style='font-size:20px;'>You can now resume the study. Press continue to resume. <br> <br></span>")
+    .print()
+    .center()
+    ,
+    newButton("continue", "Click to continue")
+        .center()
+        .css("font-size", "medium")
+        .print()
+        .wait()
+)
+
+
 // Experimental trial
 Template("benchmark_items.csv", row =>
     newTrial("experimental-trial",
