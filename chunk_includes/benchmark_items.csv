@@ -1,4 +1,4 @@
-phenomenon,phenomenon_name,item,condition,condition_name,id,group,sentence,critical_index,question,option_1,option_2,answer
+phenomenon,phenomenon_name,item,condition,condition_name,id,group,sentence,critical_index,question,option_1,option_2,exp_answer
 1,"(i) S–O Garden Path à la Bader & Meng, Variant 1/2",1,a1,[+amb+SO],1,G1x,"Alle_wollten_wissen, welche_Lokalpolitikerin die_amtierenden_Minister gelobt_hat, als die_Pressekonferenz begann.",4.0,Wer wurde gelobt?,Eine Lokalpolitikerin.,Die amtierenden Minister.,Die amtierenden Minister.
 1,"(i) S–O Garden Path à la Bader & Meng, Variant 1/2",1,a1,[+amb+SO],2,G1y,"Alle_wollten_wissen, welche_Lokalpolitikerin die_amtierenden_Minister gelobt_hat, als die_Pressekonferenz begann.",4.0,Wer wurde gelobt?,Eine Lokalpolitikerin.,Die amtierenden Minister.,Die amtierenden Minister.
 1,"(i) S–O Garden Path à la Bader & Meng, Variant 1/2",1,a1,[+amb+SO],3,G1z,"Alle_wollten_wissen, welche_Lokalpolitikerin die_amtierenden_Minister gelobt_hat, als die_Pressekonferenz begann.",4.0,Wer wurde gelobt?,Eine Lokalpolitikerin.,Die amtierenden Minister.,Die amtierenden Minister.
