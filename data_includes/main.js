@@ -1,3 +1,5 @@
+// TODO in different places: translate instruction snippets to German etc., adapt them
+
 PennController.ResetPrefix(null); // Shorten command names (keep this line here))
 
 Header(
@@ -185,7 +187,12 @@ Template("benchmark_items.csv", row =>
     .log("id", row.id)
     .log("item", row.item)
     .log("condition", row.condition)
-    // TODO more logging
+    .log("group", row.group)
+    .log("phenomenon", row.phenomenon)
+    .log("condition", row.condition)
+    .log("condition_name", row.condition_name)
+    .log("critical_index", row.critical_index)
+    .log("answer", row.answer) // this is true answer; TODO: change name for clarity
 )
 
 
