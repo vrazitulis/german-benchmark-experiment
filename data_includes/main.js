@@ -192,7 +192,7 @@ Template("benchmark_items.csv", row =>
     .log("condition", row.condition)
     .log("condition_name", row.condition_name)
     .log("critical_index", row.critical_index)
-    .log("answer", row.answer) // this is true answer; TODO: change name for clarity
+    .log("exp_answer", row.exp_answer)
 )
 
 
