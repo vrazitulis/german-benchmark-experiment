@@ -50,8 +50,8 @@ newTrial("ScreenSizeChecker",
     newFunction( ()=>window.matchMedia("only screen and (max-width: 899px)").matches )
         .test.is(true)
         .success( 
-            newText("<p>Unfortunately, your display resolution is too low.</p>"+
-                    "<p>Please try to change your resolution or use another computer/display.</p>")
+            newText("<p>Leider ist Ihre Bildschirmauflösung zu klein.</p>"+
+                    "<p>Bitte erhöhen Sie Ihre Bildschirmauflösung oder probieren Sie es an einem anderen PC.</p>")
                 .print()
             ,
             newButton().wait() 
@@ -62,7 +62,7 @@ newTrial("ScreenSizeChecker",
 PennController("Fullscreen",
   newHtml("fullscreen", "fullscreen.html")
   .print(),
-  newButton("Go full screen")
+  newButton("Zum Vollbildmodus")
     .css("font-size", "medium")
     .center()
     .print()
@@ -76,10 +76,10 @@ PennController("Fullscreen",
 newTrial("consent",
     newHtml("consent_form", "consent.html")
         .cssContainer({"width":"700px"})
-        .checkboxWarning("You must consent before continuing.")
+        .checkboxWarning("Sie müssen zustimmen, bevor Sie fortfahren..")
         .print()
     ,
-    newButton("continue", "Click to continue")
+    newButton("continue", "Klicken, um fortzufahren")
         .center()
         .css("font-size", "medium")
         .print()
@@ -108,8 +108,8 @@ newTrial("instructions",
 
 newTrial("questionnaire",
     newController("Question", {
-            q: "Are you a native speaker of English?",
-            as: ["Yes", "No"],
+            q: "Ist Deutsch Ihre Muttersprache?",
+            as: ["Ja", "Nein"],
             hasCorrect: true,
             randomOrder: false})
         .center()
@@ -122,8 +122,8 @@ newTrial("questionnaire",
 
 newTrial("questionnaire",
     newController("Question", {
-            q: "Are you currently living in an English-speaking country?",
-            as: ["Yes", "No"],
+            q: "Leben Sie aktuell in einem deutschsprachigen Land?",
+            as: ["Ja", "Nein"],
             hasCorrect: true,
             randomOrder: false})
         .center()
@@ -138,7 +138,7 @@ newTrial("questionnaire",
 
 newTrial("break",
      // Automatically print all Text elements, centered
-    newText("pleasewait", "<span style='font-size:20px;'>Take a breather!</span>")
+    newText("pleasewait", "<span style='font-size:20px;'>Machen Sie eine kurze Pause! Es geht gleich weiter.</span>")
     .print()
     .center()
     ,
@@ -149,11 +149,11 @@ newTrial("break",
     getText("pleasewait")
     .remove()
     ,
-    newText("resume", "<span style='font-size:20px;'>You can now resume the study. Press continue to resume. <br> <br></span>")
+    newText("resume", "<span style='font-size:20px;'>Sie können mit dem Experiment jetzt fortfahren.<br><br></span>")
     .print()
     .center()
     ,
-    newButton("continue", "Click to continue")
+    newButton("continue", "Klicken, um fortzufahren")
         .center()
         .css("font-size", "medium")
         .print()
@@ -173,7 +173,7 @@ Template("benchmark_items.csv", row =>
         .remove()
         ,
         newController("Question", {
-            instructions: "Use number keys or click on the answer.",
+            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf die Antwort.",
             q: row.question,
             as: [row.option_1, row.option_2],
             hasCorrect: true,
@@ -201,12 +201,12 @@ SendResults("send")
 
 // Completion screen
 newTrial("confirmation-prolific" ,
-    newText("<p>Thank you for your participation!</p>")
+    newText("<p>Danke für Ihre Teilnahme!</p>")
         .center()
         .print()
     ,
  // This is where you should put the link from the last step.
-    newText("<p><a href='https://app.prolific.co/submissions/complete?cc=C1A7Z6LC'>Click here to validate your submission</a></p>")
+    newText("<p><a href='https://app.prolific.co/submissions/complete?cc=C1A7Z6LC'>Klicken Sie hier, um Ihre Teilnahme zu validieren.</a></p>")
         .center()
         .print()
     ,
