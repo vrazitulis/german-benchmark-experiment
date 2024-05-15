@@ -95,7 +95,7 @@ newTrial("instructions",
         .cssContainer({"width":"700px"})
         .print()
     ,
-    newButton("continue", "Click to continue")
+    newButton("continue", "Klicken, um fortzufahren")
         .center()
         .css("font-size", "medium")
         .print()
