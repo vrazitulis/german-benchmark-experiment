@@ -1,5 +1,3 @@
-// TODO in different places: translate instruction snippets to German etc., adapt them
-
 PennController.ResetPrefix(null); // Shorten command names (keep this line here))
 
 Header(
