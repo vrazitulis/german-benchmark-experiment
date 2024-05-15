@@ -7,9 +7,10 @@ Header(
 .log( "STUDY_ID" , GetURLParameter("STUDY_ID") )
 .log( "SESSION_ID" , GetURLParameter("SESSION_ID") )
 
-DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
+DebugOff() // Uncomment this line only when you are 100% done designing your experiment
 
-// custom function
+
+// Custom function
 
 function SepWithN(sep, main, n) {
     this.args = [sep,main];
@@ -39,9 +40,10 @@ function sepWithN(sep, main, n) { return new SepWithN(sep, main, n); }
 
 // First show instructions, then experiment trials, send results and show end screen
 
-Sequence("counter", "consent", "instructions", sepWithN("break", randomize("experimental-trial"), 42), "questionnaire", "send", "confirmation-prolific")
+Sequence("counter", "consent", "instructions", "practice", "transition", sepWithN("break", randomize("experimental-trial"), 42), "questionnaire", "send", "confirmation-prolific")
 
 SetCounter("counter", "inc", 1);
+
 
 // This message is shown to everyone with a screen resolution under 1280px
 newTrial("ScreenSizeChecker",
@@ -132,7 +134,149 @@ newTrial("questionnaire",
 )
 
 
-// TODO: add practice trials
+newTrial("practice",
+    newHtml("context1", "context1.html")
+            .cssContainer({"width":"700px"})
+            .center()
+            .print()
+        ,
+        
+        newKey("space", " ")
+            .wait()
+        ,
+        
+        getHtml("context1")
+            .remove()
+        ,
+        
+        newFunction( ()=> {
+            return new Promise(resolve => {
+                let listener = event => {
+                    if (event.code === "Space" && event.type === "keyup") {
+                        document.removeEventListener("keyup", listener);
+                        resolve();
+                    }
+                };
+                document.addEventListener("keyup", listener);
+            });
+        })
+        .call()
+        ,
+        
+        newController("DashedSentence", {s : "Longtemps, je_me_suis couché de_bonne_heure"})
+            .size(900, 400)
+            .center()
+            .print()
+            .log()
+            .wait()
+            .remove()
+        ,
+        
+        newHtml("context2", "context2.html")
+            .cssContainer({"width":"700px"})
+            .center()
+            .print()
+        ,
+        
+        newKey("space", " ")
+            .wait()
+        ,
+
+        getHtml("context2")
+            .remove()
+        ,
+     
+        newFunction( ()=> {
+            return new Promise(resolve => {
+                let listener = event => {
+                    if (event.code === "Space" && event.type === "keyup") {
+                        document.removeEventListener("keyup", listener);
+                        resolve();
+                    }
+                };
+                document.addEventListener("keyup", listener);
+            });
+        })
+        .call()
+        ,
+    
+        newController("DashedSentence", {s : "Toutes_les_familles_heureuses se_ressemblent, mais chaque_famille_malheureuse l'est à_sa_façon"})
+            .size(900, 400)
+            .center()
+            .print()
+            .log()
+            .wait()
+            .remove()
+            ,
+        
+            newHtml("context3", "context3.html")
+            .cssContainer({"width":"700px"})
+            .center()
+            .print()
+            ,
+            
+            newKey("space", " ")
+            .wait()
+            ,
+    
+            getHtml("context3")
+            .remove()
+        ,
+    
+        newFunction( ()=> {
+            return new Promise(resolve => {
+                let listener = event => {
+                    if (event.code === "Space" && event.type === "keyup") {
+                        document.removeEventListener("keyup", listener);
+                        resolve();
+                    }
+                };
+                document.addEventListener("keyup", listener);
+            });
+        })
+        .call()
+        ,
+    
+        newController("DashedSentence", {s : "Alice, assise_auprès_de_sa_soeur sur_le_gazon, commençait_à_s'ennuyer de_rester_là à_ne_rien_faire"})
+            .size(900, 400)
+            .center()
+            .print()
+            .log()
+            .wait()
+            .remove()
+        ,
+        
+        newController("Question", {
+                instructions: "Utilisez les touches numérotées ou cliquez sur la bonne réponse.",
+                q:  "Alice était-elle assise ?",
+                as: ["Oui", "Non"].sort(v=>0.5-Math.random()).concat(["Je ne sais pas"]),
+                hasCorrect: true,
+                randomOrder: false})
+            .center()
+            .print()
+            .log()
+            .wait()
+            .remove()
+
+    )
+
+
+// Transition
+    newTrial("transition",
+     // Automatically print all Text elements, centered
+    defaultText.center().print()
+    ,
+    newHtml("transition", "transition.html")
+        .cssContainer({"width":"700px"})
+        .print()
+    ,
+    newButton("continue", "Klicken, um fortzufahren")
+        .center()
+        .css("font-size", "medium")
+        .print()
+        .wait()
+)
+
 
 newTrial("break",
      // Automatically print all Text elements, centered
@@ -175,7 +319,7 @@ Template("benchmark_items.csv", row =>
             q: row.question,
             as: [row.option_1, row.option_2],
             hasCorrect: true,
-            randomOrder: false})
+            randomOrder: false })
         .center()
         .print()
         .log()
@@ -211,3 +355,4 @@ newTrial("confirmation-prolific" ,
     newButton("void")
         .wait()
     ).setOption("countsForProgressBar",false)
+
