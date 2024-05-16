@@ -329,7 +329,7 @@ Template("benchmark_items.csv", row =>
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q: row.question,
             as: [row.option_1, row.option_2].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]),
-            hasCorrect: true,
+            hasCorrect: false,  // most of them have correct, but will compare given and true answers later on in R instead
             randomOrder: false })
         .center()
         .print()
