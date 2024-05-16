@@ -14,10 +14,6 @@ DebugOff() // Uncomment this line only when you are 100% done designing your exp
 var progressBarText = "";
 
 
-// Counter for keeping track of order or trial presentation (is increased with each logging):
-var order_counter = 0;
-
-
 // Custom function
 
 function SepWithN(sep, main, n) {
@@ -341,7 +337,6 @@ Template("benchmark_items.csv", row =>
         .wait()
         .remove()
     )
-    .log("order_counter", ++order_counter)  // adds one to order_counter, then logs it
     .log("phenomenon", row.phenomenon)
     .log("phenomenon_name", row.phenomenon_name)
     .log("item", row.item)
