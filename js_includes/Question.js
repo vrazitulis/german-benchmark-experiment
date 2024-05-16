@@ -1,9 +1,5 @@
 /* This software is licensed under a BSD license; see the LICENSE file for details. */
 
-//
-// TODO: Replace this controller with something that's not such a horrible mess!
-// 
-
 (function () {
 
 var __Question_callback__ = null;
