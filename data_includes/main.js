@@ -135,128 +135,45 @@ newTrial("questionnaire",
 
 
 newTrial("practice",
-    newHtml("context1", "context1.html")
-            .cssContainer({"width":"700px"})
-            .center()
-            .print()
-        ,
-        
-        newKey("space", " ")
-            .wait()
-        ,
-        
-        getHtml("context1")
-            .remove()
-        ,
-        
-        newFunction( ()=> {
-            return new Promise(resolve => {
-                let listener = event => {
-                    if (event.code === "Space" && event.type === "keyup") {
-                        document.removeEventListener("keyup", listener);
-                        resolve();
-                    }
-                };
-                document.addEventListener("keyup", listener);
-            });
-        })
-        .call()
-        ,
-        
-        newController("DashedSentence", {s : "Longtemps, je_me_suis couché de_bonne_heure"})
-            .size(900, 400)
-            .center()
-            .print()
-            .log()
-            .wait()
-            .remove()
-        ,
-        
-        newHtml("context2", "context2.html")
-            .cssContainer({"width":"700px"})
-            .center()
-            .print()
-        ,
-        
-        newKey("space", " ")
-            .wait()
-        ,
-
-        getHtml("context2")
-            .remove()
-        ,
-     
-        newFunction( ()=> {
-            return new Promise(resolve => {
-                let listener = event => {
-                    if (event.code === "Space" && event.type === "keyup") {
-                        document.removeEventListener("keyup", listener);
-                        resolve();
-                    }
-                };
-                document.addEventListener("keyup", listener);
-            });
-        })
-        .call()
-        ,
+    newController("DashedSentence", {s : "Longtemps, je_me_suis couché de_bonne_heure"})
+        .css("white-space","nowrap")
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    ,
     
-        newController("DashedSentence", {s : "Toutes_les_familles_heureuses se_ressemblent, mais chaque_famille_malheureuse l'est à_sa_façon"})
-            .size(900, 400)
-            .center()
-            .print()
-            .log()
-            .wait()
-            .remove()
-            ,
-        
-            newHtml("context3", "context3.html")
-            .cssContainer({"width":"700px"})
-            .center()
-            .print()
-            ,
-            
-            newKey("space", " ")
-            .wait()
-            ,
+    newController("DashedSentence", {s : "Toutes_les_familles_heureuses se_ressemblent, mais chaque_famille_malheureuse l'est à_sa_façon"})
+        .css("white-space","nowrap")
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    ,
     
-            getHtml("context3")
-            .remove()
-        ,
+      
+    newController("DashedSentence", {s : "Alice, assise_auprès_de_sa_soeur sur_le_gazon, commençait_à_s'ennuyer de_rester_là à_ne_rien_faire"})
+        .css("white-space","nowrap")
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    ,
     
-        newFunction( ()=> {
-            return new Promise(resolve => {
-                let listener = event => {
-                    if (event.code === "Space" && event.type === "keyup") {
-                        document.removeEventListener("keyup", listener);
-                        resolve();
-                    }
-                };
-                document.addEventListener("keyup", listener);
-            });
-        })
-        .call()
-        ,
-    
-        newController("DashedSentence", {s : "Alice, assise_auprès_de_sa_soeur sur_le_gazon, commençait_à_s'ennuyer de_rester_là à_ne_rien_faire"})
-            .size(900, 400)
-            .center()
-            .print()
-            .log()
-            .wait()
-            .remove()
-        ,
-        
-        newController("Question", {
-                instructions: "Utilisez les touches numérotées ou cliquez sur la bonne réponse.",
-                q:  "Alice était-elle assise ?",
-                as: ["Oui", "Non"].sort(v=>0.5-Math.random()).concat(["Je ne sais pas"]),
-                hasCorrect: true,
-                randomOrder: false})
-            .center()
-            .print()
-            .log()
-            .wait()
-            .remove()
+    newController("Question", {
+            instructions: "Utilisez les touches numérotées ou cliquez sur la bonne réponse.",
+            q:  "Alice était-elle assise ?",
+            as: ["Oui", "Non"],
+            hasCorrect: true,
+            randomOrder: false})
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
 
     )
 
