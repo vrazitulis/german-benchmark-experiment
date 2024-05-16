@@ -114,7 +114,7 @@ newTrial("questionnaire",
     newController("Question", {
             q: "Ist Deutsch Ihre Muttersprache?",
             as: ["Ja", "Nein"],
-            hasCorrect: true,
+            hasCorrect: false,
             randomOrder: false})
         .center()
         .print()
@@ -128,7 +128,7 @@ newTrial("questionnaire",
     newController("Question", {
             q: "Leben Sie aktuell in einem deutschsprachigen Land?",
             as: ["Ja", "Nein"],
-            hasCorrect: true,
+            hasCorrect: false,
             randomOrder: false})
         .center()
         .print()
@@ -152,7 +152,7 @@ newTrial("practice",
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Was liest die Studentin?",
             as: ["Ein Buch.", "Eine Zeitschrift."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // first is correct
-            hasCorrect: true,
+            hasCorrect: false,
             randomOrder: false})
         .center()
         .print()
@@ -174,7 +174,7 @@ newTrial("practice",
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Wie lange schreibt der Autor bereits an seinem Roman?",
             as: ["Seit Monaten.", "Seit Jahren."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // second is correct
-            hasCorrect: true,
+            hasCorrect: false,
             randomOrder: false})
         .center()
         .print()
@@ -196,7 +196,7 @@ newTrial("practice",
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Wohin ging der Schulausflug?",
             as: ["Ins den Zoo.", "Ins Museum."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // second is correct
-            hasCorrect: true,
+            hasCorrect: false,
             randomOrder: false})
         .center()
         .print()
@@ -218,7 +218,7 @@ newTrial("practice",
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Wohin fahren die Freunde?",
             as: ["In die Berge.", "Ans Meer."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // first is correct
-            hasCorrect: true,
+            hasCorrect: false,
             randomOrder: false})
         .center()
         .print()
@@ -240,7 +240,7 @@ newTrial("practice",
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Ist die kleine Katze den ganzen Tag wach?",
             as: ["Ja.", "Nein."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // second is correct
-            hasCorrect: true,
+            hasCorrect: false,
             randomOrder: false})
         .center()
         .print()
@@ -262,7 +262,7 @@ newTrial("practice",
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Was erklärt der Lehrer?",
             as: ["Grammatikregeln.", "Tonarten."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // first is correct
-            hasCorrect: true,
+            hasCorrect: false,
             randomOrder: false})
         .center()
         .print()
