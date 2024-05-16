@@ -155,7 +155,7 @@ newTrial("practice",
         .log()
         .wait()
         .remove()
-    )
+    ,
 
     newController("DashedSentence", {s : "Der_Autor, der seit_Jahren an_seinem_Roman schreibt, wird bald endlich das_letzte_Kapitel beenden."})
         .css("white-space","nowrap")
@@ -177,7 +177,7 @@ newTrial("practice",
         .log()
         .wait()
         .remove()
-    )
+    ,
       
     newController("DashedSentence", {s : "Die_Lehrerin organisierte einen_Schulausflug, damit die_Kinder das_Museum besuchen_konnten."})
         .css("white-space","nowrap")
