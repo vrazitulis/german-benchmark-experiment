@@ -10,6 +10,10 @@ Header(
 DebugOff() // Uncomment this line only when you are 100% done designing your experiment
 
 
+// Empty progress bar label (default is "progress"):
+var progressBarText = "";
+
+
 // Custom function
 
 function SepWithN(sep, main, n) {
