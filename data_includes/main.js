@@ -135,7 +135,7 @@ newTrial("questionnaire",
 
 
 newTrial("practice",
-    newController("DashedSentence", {s : "Longtemps, je_me_suis couché de_bonne_heure"})
+    newController("DashedSentence", {s : "In_der_Bibliothek liest die_Studentin ein_Buch über_Astronomie."})
         .css("white-space","nowrap")
         .center()
         .print()
@@ -143,8 +143,21 @@ newTrial("practice",
         .wait()
         .remove()
     ,
-    
-    newController("DashedSentence", {s : "Toutes_les_familles_heureuses se_ressemblent, mais chaque_famille_malheureuse l'est à_sa_façon"})
+
+    newController("Question", {
+            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
+            q:  "Was liest die Studentin?",
+            as: ["Ein Buch.", "Eine Zeitschrift."], // first is correct
+            hasCorrect: true,
+            randomOrder: false})
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    )
+
+    newController("DashedSentence", {s : "Der_Autor, der seit_Jahren an_seinem_Roman schreibt, wird bald endlich das_letzte_Kapitel beenden."})
         .css("white-space","nowrap")
         .center()
         .print()
@@ -152,9 +165,21 @@ newTrial("practice",
         .wait()
         .remove()
     ,
-    
+
+    newController("Question", {
+            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
+            q:  "Wie lange schreibt der Autor bereits an seinem Roman?",
+            as: ["Seit Monaten.", "Seit Jahren."], // second is correct
+            hasCorrect: true,
+            randomOrder: false})
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    )
       
-    newController("DashedSentence", {s : "Alice, assise_auprès_de_sa_soeur sur_le_gazon, commençait_à_s'ennuyer de_rester_là à_ne_rien_faire"})
+    newController("DashedSentence", {s : "Die_Lehrerin organisierte einen_Schulausflug, damit die_Kinder das_Museum besuchen_konnten."})
         .css("white-space","nowrap")
         .center()
         .print()
@@ -164,9 +189,9 @@ newTrial("practice",
     ,
     
     newController("Question", {
-            instructions: "Utilisez les touches numérotées ou cliquez sur la bonne réponse.",
-            q:  "Alice était-elle assise ?",
-            as: ["Oui", "Non"],
+            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
+            q:  "Wohin ging der Schulausflug?",
+            as: ["Ins den Zoo.", "Ins Museum."], // second is correct
             hasCorrect: true,
             randomOrder: false})
         .center()
@@ -174,7 +199,6 @@ newTrial("practice",
         .log()
         .wait()
         .remove()
-
     )
 
 
@@ -232,7 +256,7 @@ Template("benchmark_items.csv", row =>
         .remove()
         ,
         newController("Question", {
-            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf die Antwort.",
+            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q: row.question,
             as: [row.option_1, row.option_2],
             hasCorrect: true,
