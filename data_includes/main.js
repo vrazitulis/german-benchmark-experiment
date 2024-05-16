@@ -199,6 +199,72 @@ newTrial("practice",
         .log()
         .wait()
         .remove()
+    ,
+
+    newController("DashedSentence", {s : "Am_Wochenende fahren die_Freunde in_die_Berge zum_Wandern und genießen dabei die_frische_Luft und die_Aussicht."})
+        .css("white-space","nowrap")
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    ,
+    
+    newController("Question", {
+            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
+            q:  "Wohin fahren die Freunde?",
+            as: ["In die Berge.", "Ans Meer."], // first is correct
+            hasCorrect: true,
+            randomOrder: false})
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    ,
+
+    newController("DashedSentence", {s : "Die_kleine_Katze schläft den_ganzen_Tag im_sonnigen_Garten, während die_Kinder Fußball spielen."})
+        .css("white-space","nowrap")
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    ,
+    
+    newController("Question", {
+            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
+            q:  "Ist die kleine Katze den ganzen Tag wach?",
+            as: ["Ja.", "Nein."], // second is correct
+            hasCorrect: true,
+            randomOrder: false})
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    ,
+
+    newController("DashedSentence", {s : "Der_Lehrer erklärt die_neuen_Grammatikregeln, indem er verschiedene_Beispiele an_der_Tafel vorführt."})
+        .css("white-space","nowrap")
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
+    ,
+    
+    newController("Question", {
+            instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
+            q:  "Was erklärt der Lehrer?",
+            as: ["Grammatikregeln.", "Tonarten."], // first is correct
+            hasCorrect: true,
+            randomOrder: false})
+        .center()
+        .print()
+        .log()
+        .wait()
+        .remove()
     )
 
 
