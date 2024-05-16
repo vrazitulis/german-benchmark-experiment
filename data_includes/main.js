@@ -344,9 +344,9 @@ Template("benchmark_items.csv", row =>
     .log("condition_name", row.condition_name)
     .log("trial_type_id", row.trial_type_id)
     .log("group", row.group)
-    .log("sentence", row.sentence)
+    //.log("sentence", row.sentence)  // already logged by PCIbex in DashedSentence by default
     .log("critical_index", row.critical_index)
-    .log("question", row.question)
+    //.log("question", row.question)  // already logged by PCIbex in Question by default
     .log("option_1", row.option_1)
     .log("option_2", row.option_2)
     .log("exp_answer", row.exp_answer)
