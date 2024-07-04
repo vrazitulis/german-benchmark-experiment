@@ -34,6 +34,7 @@ jqueryWidget: {
                "'dashed' (default) or 'in place'.");
 
         this.currentWord = 0;
+        this.keyReleased = true;
 
         // Is there a "stopping point" specified?
         this.stoppingPoint = this.words.length;
@@ -173,14 +174,27 @@ jqueryWidget: {
 
                 return false;
             }*/
+            
+            this.safeBind($(document), 'keyup', function(e) {
+                var code = e.keyCode;
+
+                if (code == 32) {
+                    t.keyReleased = true;
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            });
 
             this.safeBind($(document), 'keydown', function(e) {
                 var time = new Date().getTime();
                 var code = e.keyCode;
 
-                if (code == 32) {
+                if (code == 32 && t.keyReleased) {
                     // *** goToNext() ***
 //                    t.recordSprResult(time, t.currentWord);
+                    t.keyReleased = false;
                     var word = t.currentWord;
                     if (word > 0 && word <= t.stoppingPoint) {
                         var rs = t.sprResults[word-1];
