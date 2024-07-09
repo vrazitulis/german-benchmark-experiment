@@ -44,7 +44,7 @@ function sepWithN(sep, main, n) { return new SepWithN(sep, main, n); }
 
 // First show instructions, then experiment trials, send results and show end screen
 
-Sequence("counter", "consent", "instructions", "practice", "transition", sepWithN("break", randomize("experimental-trial"), 42), "questionnaire", "send", "confirmation-prolific")
+Sequence("counter", "consent", "instructions", "practice", "transition", sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "send", "confirmation-prolific")
 
 SetCounter("counter", "inc", 1);
 
