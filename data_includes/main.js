@@ -44,7 +44,7 @@ function sepWithN(sep, main, n) { return new SepWithN(sep, main, n); }
 
 // First show instructions, then experiment trials, send results and show end screen
 
-Sequence("counter", "consent", "instructions", "practice", "transition", sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "send", "confirmation-prolific")
+Sequence("counter", "consent", "instructions", "practice", "transition", sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "feedback", "send", "confirmation-prolific")
 
 SetCounter("counter", "inc", 1);
 
@@ -109,7 +109,6 @@ newTrial("instructions",
 )
 
 
-
 newTrial("questionnaire",
     newController("Question", {
             q: "Ist Deutsch Ihre Muttersprache?",
@@ -135,6 +134,72 @@ newTrial("questionnaire",
         .log()
         .wait()
         .remove()
+)
+
+
+newTrial("feedback",
+    newText("feedback1_question", "Haben Sie eine Vermutung, was in diesem Experiment getestet werden sollte?")
+        .center()
+        .print()
+    ,
+
+    newTextInput("feedback1_response", "")
+        .center()
+        .log()
+        .lines(0)
+        .size(500, 200)
+        .css("margin","1em")
+        .print()
+    ,
+    
+    newButton("Klicken, um fortzufahren")
+        .center()
+        .print()
+        .wait()
+)
+
+
+newTrial("feedback",
+    newText("feedback2_question", "Ist Ihnen irgendetwas Besonderes oder Merkwürdiges im Verlauf des Experiments aufgefallen?")
+        .center()
+        .print()
+    ,
+
+    newTextInput("feedback2_response", "")
+        .center()
+        .log()
+        .lines(0)
+        .size(500, 200)
+        .css("margin","1em")
+        .print()
+    ,
+    
+    newButton("Klicken, um fortzufahren")
+        .center()
+        .print()
+        .wait()
+)
+
+
+newTrial("feedback",
+    newText("feedback3_question", "Haben Sie sonstige Anmerkungen?")
+        .center()
+        .print()
+    ,
+
+    newTextInput("feedback3_response", "")
+        .center()
+        .log()
+        .lines(0)
+        .size(500, 200)
+        .css("margin","1em")
+        .print()
+    ,
+    
+    newButton("Klicken, um fortzufahren")
+        .center()
+        .print()
+        .wait()
 )
 
 
