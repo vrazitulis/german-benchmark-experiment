@@ -44,36 +44,20 @@ function sepWithN(sep, main, n) { return new SepWithN(sep, main, n); }
 
 // First show instructions, then experiment trials, send results and show end screen
 
-Sequence("counter", "consent", "instructions", "practice", "transition", sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "feedback", "send", "confirmation-prolific")
+Sequence("counter", "fullscreen", "consent", "instructions", "practice", "transition", sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "feedback", "send", "confirmation-prolific")
 
 SetCounter("counter", "inc", 1);
 
 
-// This message is shown to everyone with a screen resolution under 1280px
-newTrial("ScreenSizeChecker",
-    newFunction( ()=>window.matchMedia("only screen and (max-width: 899px)").matches )
-        .test.is(true)
-        .success( 
-            newText("<p>Leider ist Ihre Bildschirmauflösung zu klein.</p>"+
-                    "<p>Bitte erhöhen Sie Ihre Bildschirmauflösung oder probieren Sie es an einem anderen PC.</p>")
-                .print()
-            ,
-            newButton().wait() 
-        )
-);
-
-// Fullscreen from beginning on
-PennController("Fullscreen",
-  newHtml("fullscreen", "fullscreen.html")
-  .print(),
-  newButton("Zum Vollbildmodus")
-    .css("font-size", "medium")
+// fullscreen
+newTrial("fullscreen",
+  newButton("Klicken, um in Vollbild-Modus wechseln und Studie zu starten")
     .center()
     .print()
     .wait()
-    ,
-    fullscreen()
-);
+  ,
+  fullscreen()
+)
 
 
 // Consent form
