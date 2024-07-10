@@ -44,7 +44,9 @@ function sepWithN(sep, main, n) { return new SepWithN(sep, main, n); }
 
 // First show instructions, then experiment trials, send results and show end screen
 
-Sequence("counter", "fullscreen", "consent", "instructions", "practice", "transition", sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "feedback", "send", "confirmation-prolific")
+Sequence("counter", "fullscreen", "consent", "instructions", "practice", "transition",
+        sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "feedback", "exit-fullscreen",
+        "send", "confirmation-prolific")
 
 SetCounter("counter", "inc", 1);
 
@@ -57,6 +59,12 @@ newTrial("fullscreen",
     .wait()
   ,
   fullscreen()
+)
+
+
+// exit fullscreen
+newTrial("exit-fullscreen",
+   exitFullscreen()
 )
 
 
