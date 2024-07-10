@@ -152,7 +152,7 @@ newTrial("feedback",
 
 
 newTrial("feedback",
-    newText("feedback2_question", "Ist Ihnen irgendetwas Besonderes oder Merkwürdiges im Verlauf des Experiments aufgefallen?")
+    newText("feedback2_question", "Ist Ihnen irgendetwas Besonderes im Verlauf des Experiments aufgefallen?")
         .center()
         .print()
     ,
