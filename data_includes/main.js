@@ -3,7 +3,7 @@ PennController.ResetPrefix(null); // Shorten command names (keep this line here)
 Header(
 // void
 )
-.log( "PROLIFIC_ID" , GetURLParameter("PROLIFIC_ID") )
+.log( "PROLIFIC_PID" , GetURLParameter("PROLIFIC_PID") )
 .log( "STUDY_ID" , GetURLParameter("STUDY_ID") )
 .log( "SESSION_ID" , GetURLParameter("SESSION_ID") )
 
