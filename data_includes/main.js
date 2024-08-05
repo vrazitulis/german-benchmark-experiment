@@ -44,8 +44,8 @@ function sepWithN(sep, main, n) { return new SepWithN(sep, main, n); }
 
 // First show instructions, then experiment trials, send results and show end screen
 
-Sequence("counter", "fullscreen", "consent", "instructions", "practice", "transition",
-        sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "feedback", "exit-fullscreen",
+Sequence("counter", "fullscreen", "consent", "instructions", "warning", "practice", "transition",
+        sepWithN("break", randomize("experimental-trial"), 19), "questionnaire", "feedback", "exit-fullscreen",
         "send", "confirmation-prolific")
 
 SetCounter("counter", "inc", 1);
@@ -90,6 +90,22 @@ newTrial("instructions",
     defaultText.center().print()
     ,
     newHtml("instructions", "instr.html")
+        .cssContainer({"width":"700px"})
+        .print()
+    ,
+    newButton("continue", "Klicken, um fortzufahren")
+        .center()
+        .css("font-size", "medium")
+        .print()
+        .wait()
+)
+
+
+newTrial("warning",
+     // Automatically print all Text elements, centered
+    defaultText.center().print()
+    ,
+    newHtml("warning", "warn.html")
         .cssContainer({"width":"700px"})
         .print()
     ,
@@ -208,7 +224,7 @@ newTrial("practice",
     newController("Question", {
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Was liest die Studentin?",
-            as: ["Ein Buch.", "Eine Zeitschrift."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // first is correct
+            as: ["Ein Buch.", "Eine Zeitschrift."].sort(v=>0.5-Math.random()), // first is correct
             hasCorrect: false,
             randomOrder: false})
         .center()
@@ -230,7 +246,7 @@ newTrial("practice",
     newController("Question", {
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Wie lange schreibt der Autor bereits an seinem Roman?",
-            as: ["Seit Monaten.", "Seit Jahren."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // second is correct
+            as: ["Seit Monaten.", "Seit Jahren."].sort(v=>0.5-Math.random()), // second is correct
             hasCorrect: false,
             randomOrder: false})
         .center()
@@ -252,7 +268,7 @@ newTrial("practice",
     newController("Question", {
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Wohin ging der Schulausflug?",
-            as: ["Ins den Zoo.", "Ins Museum."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // second is correct
+            as: ["Ins den Zoo.", "Ins Museum."].sort(v=>0.5-Math.random()), // second is correct
             hasCorrect: false,
             randomOrder: false})
         .center()
@@ -274,7 +290,7 @@ newTrial("practice",
     newController("Question", {
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Wohin fahren die Freunde?",
-            as: ["In die Berge.", "Ans Meer."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // first is correct
+            as: ["In die Berge.", "Ans Meer."].sort(v=>0.5-Math.random()), // first is correct
             hasCorrect: false,
             randomOrder: false})
         .center()
@@ -296,7 +312,7 @@ newTrial("practice",
     newController("Question", {
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Ist die kleine Katze den ganzen Tag wach?",
-            as: ["Ja.", "Nein."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // second is correct
+            as: ["Ja.", "Nein."].sort(v=>0.5-Math.random()), // second is correct
             hasCorrect: false,
             randomOrder: false})
         .center()
@@ -318,7 +334,7 @@ newTrial("practice",
     newController("Question", {
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Was erklärt der Lehrer?",
-            as: ["Grammatikregeln.", "Tonarten."].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]), // first is correct
+            as: ["Grammatikregeln.", "Tonarten."].sort(v=>0.5-Math.random()), // first is correct
             hasCorrect: false,
             randomOrder: false})
         .center()
@@ -385,7 +401,7 @@ Template("benchmark_items.csv", row =>
         newController("Question", {
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q: row.question,
-            as: [row.option_1, row.option_2].sort(v=>0.5-Math.random()).concat(["Ich weiß es nicht."]),
+            as: [row.option_1, row.option_2].sort(v=>0.5-Math.random()),
             hasCorrect: false,  // most of them have correct, but will compare given and true answers later on in R instead
             randomOrder: false })
         .center()
