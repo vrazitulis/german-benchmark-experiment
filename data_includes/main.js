@@ -45,13 +45,12 @@ function sepWithN(sep, main, n) { return new SepWithN(sep, main, n); }
 // First show instructions, then experiment trials, send results and show end screen
 
 Sequence("counter", "fullscreen", "consent", "instructions", "warning", "practice", "transition",
-         sepWithN("break", randomize("experimental-trial"), 38), "questionnaire", "feedback", "exit-fullscreen",
-         "send", "confirmation-prolific")
+         sepWithN("break", randomize("experimental-trial"), 38), "feedback", "send",
+         "confirmation-prolific")
 
 SetCounter("counter", "inc", 1);
 
-
-// fullscreen
+// Fullscreen
 newTrial("fullscreen",
   newButton("Klicken, um in Vollbild-Modus wechseln und Studie zu starten")
     .center()
@@ -60,13 +59,6 @@ newTrial("fullscreen",
   ,
   fullscreen()
 )
-
-
-// exit fullscreen
-newTrial("exit-fullscreen",
-   exitFullscreen()
-)
-
 
 // Consent form
 newTrial("consent",
@@ -114,34 +106,6 @@ newTrial("warning",
         .css("font-size", "medium")
         .print()
         .wait()
-)
-
-
-newTrial("questionnaire",
-    newController("Question", {
-            q: "Ist Deutsch Ihre Muttersprache?",
-            as: ["Ja", "Nein"],
-            hasCorrect: false,
-            randomOrder: false})
-        .center()
-        .print()
-        .log()
-        .wait()
-        .remove()
-)
-
-
-newTrial("questionnaire",
-    newController("Question", {
-            q: "Leben Sie aktuell in einem deutschsprachigen Land?",
-            as: ["Ja", "Nein"],
-            hasCorrect: false,
-            randomOrder: false})
-        .center()
-        .print()
-        .log()
-        .wait()
-        .remove()
 )
 
 
