@@ -232,7 +232,7 @@ newTrial("practice",
     newController("Question", {
             instructions: "Benutzen Sie die Zifferntasten oder klicken Sie auf eine Antwort.",
             q:  "Wohin ging der Schulausflug?",
-            as: ["Ins den Zoo.", "Ins Museum."], // second is correct
+            as: ["In den Zoo.", "Ins Museum."], // second is correct
             hasCorrect: false,
             randomOrder: false})
         .center()
